@@ -1,21 +1,23 @@
 # Graphical user interface (GUI) repository of the 2023 SenSwiss Team
 
 **Table of content:**
- - [Structure](#Structure)
- - [Installation](#Installation)
- - [Description](#Description)
-    - [Interface](#Interface)
-    - [Camera](#Camera)
-    - [Spectrometer](#Spectrometer)
-    - [Microfluidic system](#Microfluidic-system)
-    - [Arduino & DC motor](#Arduino-&-DC-motor)
-    - [Signal processing](#Signal-processing)
-      - [Camera image](#Camera-image)
-      - [Spectrometer image](#Spectrometer-image)
-    - [Protocols](#Protocols)
- - [Usage](#Usage)
- - [Results](#Results)
- - [Authors](#Authors)
+- [Graphical user interface (GUI) repository of the 2023 SenSwiss Team](#graphical-user-interface-gui-repository-of-the-2023-senswiss-team)
+  - [Structure](#structure)
+  - [Installation](#installation)
+  - [Description](#description)
+    - [Interface](#interface)
+    - [Camera](#camera)
+    - [Spectrometer](#spectrometer)
+    - [Microfluidic system](#microfluidic-system)
+    - [Arduino \& DC motor](#arduino--dc-motor)
+- [Signal processing](#signal-processing)
+  - [Camera image](#camera-image)
+  - [Spectrometer signal](#spectrometer-signal)
+    - [Centroids](#centroids)
+    - [Protocols](#protocols)
+  - [Usage](#usage)
+  - [Results](#results)
+  - [Authors](#authors)
 
 <a id="Structure"></a>
 ## Structure
@@ -71,13 +73,38 @@ The GUI is divided into 3 parts:
 
 
 <a id="Signal-processing"></a>
-### Signal processing
 
-<a id="Camera-image"></a>
-#### Camera image
+# Signal processing
 
-<a id="Spectrometer-image"></a>
-#### Spectrometer image
+The GUI enables recognition of the device connected (camera/spectrometer) and is complete of functions specific to handle the modality chosen. 
+
+## Camera image
+
+The code enables the extraction of a Region Of Interest (ROI) from the camera image, facilitating saving and display in a separate window. It involves image filtering and thresholding, followed by moment calculations. Furthermore, the ROI can be tailored to various shapes like circles or rectangles.The average intensity is computed and returned.
+
+
+The original idea was to use the intensity of the ROI to detect the concentration of the sample. However, this method was found to not be sensitive enough. Hence, we decided to rely on the wavelenght shift, measured through the spectrometer, to detect the concentration of the sample.
+
+## Spectrometer signal
+
+The spectrometer employed by the SenSwiss team 2023 is MAYA2000PR0. The spectrometer connected to the computer gets recognized and the signal is acquired. 
+
+The signal from the spectrometer is low pass filtered. The dark and flat fields are saved (by pressing a button on the GUI), allowing to normalize the signal. The signal is then plotted in a top left window.
+
+normalized_intensities_spec = (intensities_spec - dark_field) / (flat_field - dark_field) * normalize_gain
+
+The peaks are computed and the wavelength shift is calculated. The shift of the absorption peak is then displayed in the bottom left window of the GUI.
+
+As a good Signal-to-Noise ratio is crucial for optimal detection, different  denoising methods have been implemented.
+
+Firstly, we implemented a simple moving average filter. The filter is applied to the signal and the result is plotted in a top right window. This denoising method proved not to be effective enough. Hence a Savitzy-Golay filter was added to smooth the intensities signal before normalizing. The window can be chosen by the user. The result is plotted in a bottom left window.
+
+### Centroids
+
+Having found the previous method ineffective, we resorted to computing centroids. This involves calculating a moving average for centroids and then plotting either centroids or wavelength data over time. Vertical lines are incorporated at the times of comments, enhancing its utility as a tool for visualizing data and comment annotations. The code for this can be found in the file `plotCentroids.py`.
+
+
+
 
 <a id="Protocols"></a>
 ### Protocols
