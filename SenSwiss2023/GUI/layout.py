@@ -164,6 +164,11 @@ def create_layout(logo_size: typing.Tuple[int, int], camera_img_size: typing.Tup
 
     tab_spectrometer = [
         [
+            sg.Button("Acquisition period", key="acquisitionPeriod"),
+            sg.Input("0.5", key="acquistionPeriodInput", size=(6, 1)),
+            sg.Button("Reconnect spectrometer", key="reconnectSpectrometer"),
+        ],
+        [
             sg.Button("Save Spectrograph", key="saveSpec"),
             sg.Text("Add to name of file (optional):"),
             sg.Input("", key="specName", size=(10, 1)),
@@ -239,26 +244,11 @@ def create_layout(logo_size: typing.Tuple[int, int], camera_img_size: typing.Tup
         
     tab_motor = [
         [
-            sg.Text("Motor controls"),
             sg.Button("Reconnect arduino", key="reconnectArduino"),
-        ],
-        [
             sg.Button("Open chamber", key="openChamber"),
             sg.Button("Close chamber", key="closeChamber"),
-        ],
-        [
-            sg.Text("Manual control"),
-        ],
-        [
-            sg.Button("Start DC motor", key="startDCmotor"),
             sg.Button("Stop DC motor", key="stopDCmotor"),
         ],
-        [
-            sg.Input("", key='inputDCSpeed', size=(6, 1)),
-            sg.Text("[rpm] (0-11)"),
-            sg.Button("Set speed", key="setDCSpeed"),
-            sg.Checkbox("Upward", key="DCDirection", default=True, enable_events=True),
-        ]
     ]
     
     print_metric = [
@@ -266,7 +256,6 @@ def create_layout(logo_size: typing.Tuple[int, int], camera_img_size: typing.Tup
             sg.Button("Reconnect pump", key="reconnectPump"),
             sg.Button("Stop and trash", key="goToZero"),
             sg.Button("Reinitialize", key="reinit"),
-            sg.Button("Bell", key="bell"),
         ],
         [
             sg.Button("Kick out bubble", key="kickOutBubble"),
@@ -286,13 +275,6 @@ def create_layout(logo_size: typing.Tuple[int, int], camera_img_size: typing.Tup
                 ],
                 expand_x=True,
             )
-        ],
-        [
-            sg.Button("Acquisition period", key="acquisitionPeriod"),
-            sg.Input("0.5", key="acquistionPeriodInput", size=(6, 1)),
-        ],
-        [
-            sg.Button("Reconnect spectrometer", key="reconnectSpectrometer"),
         ],
         [
             sg.TabGroup(

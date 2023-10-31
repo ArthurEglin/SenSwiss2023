@@ -304,8 +304,9 @@ if __name__ == "__main__":
         clear_time: float = time.time()
         auto_scale: bool = False
         min_y: int = 0
-        max_y: int = 300
+        max_y: int = 260 # max value of the camera is 255 for an 8bit value, but we add a bit of margin
         updatePlot(intensity_fig, intensity_ax, intensities, time_of_intensities, auto_scale, min_y, max_y, "Real time measurement of average intensity", "Time [s]", "Intensity [a.u.]")
+
     if spec_connected == True and camera_connected == False:
         wavelengths: typing.List[float] = []
         intensities_spec: typing.List[float] = []
@@ -432,7 +433,7 @@ if __name__ == "__main__":
             success, ROI_center = get_new_image(cam, intensities, drawROI, filter_threshold, ROI_params, kernel_size, dilation_number, blockROI, ROI_center)
             if success:
                 time_of_intensities.append(time.time() - clear_time)    
-                updatePlot(intensity_fig, intensity_ax, intensities, time_of_intensities, auto_scale, min_y, max_y)
+                updatePlot(intensity_fig, intensity_ax, intensities, time_of_intensities, auto_scale, min_y, max_y, "Real time measurement of average intensity", "Time [s]", "Intensity [a.u.]")
             
             last_acquisition_time = time.time()
 
@@ -1063,33 +1064,11 @@ if __name__ == "__main__":
         elif event == "closeChamber":
             if arduino_connected:
                 arduino_connected = arduino_control.close_chamber(arduino)
-
-        elif event == "startDCmotor":
-            if arduino_connected:
-                arduino_connected = arduino_control.motor_powered(True, arduino)
                 
         elif event == "stopDCmotor":
             if arduino_connected:
                 arduino_connected = arduino_control.motor_powered(False, arduino)
-                
-        elif event == "setDCSpeed":
-            if arduino_connected:
-                try:
-                    speed = float(window["inputDCSpeed"].get())
-                    arduino_connected = arduino_control.set_motor_speed(speed, arduino)
-                except:
-                    print("Invalid speed")
-                    window["speedInput"].update("0")
-                    
-        elif event == "DCDirection":
-            if arduino_connected:
-                try:
-                    direction: int = 0 if window["DCDirection"].get() else 1
-                    arduino_connected = arduino_control.set_motor_direction(direction, arduino)
-                except:
-                    print("Invalid direction")
-                    window["DCDirection"].update(True)
-                    
+        
         elif event == "sendCommands":
             if pump_connected == True:
                 commands_valid: bool = True
