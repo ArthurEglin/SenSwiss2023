@@ -1,7 +1,5 @@
 # General user interface (GUI) repository of the 2023 SenSwiss Team
 
-## Description
-
 ## Structure
 The GUI repository of the 2023 SenSwiss Team is organized as follows:
 - `image_saved`: stores the images taken by the camera or the spectrographs taken by the spectrometer during the experiments.
@@ -33,7 +31,23 @@ python gui.py
 ```
 Be sure to check that the necessary devices (camera/spectrometer, pump, arduino) are connected to the computer before running the GUI.
 
+## Description
+### Interface
+![ROI in automatic mode](layout_figures/ROI_auto.jpg)
+### Camera
+
+### Spectrometer
+
+### Microfluidic system
+
+### Arduino & DC motor
+
+### Signal processing
+
+### Protocols
+
+
 ## Authors
 - [**Marin Bricq**](https://github.com/MBricq)
 - [**Arthur Eglin**](https://github.com/ArthurEglin)
-- [**Elena Gado**]()
+- [**Elena Gado**](https://github.com/ElenaGrazia)
