@@ -4,6 +4,17 @@
  - [Structure](#Structure)
  - [Installation](#Installation)
  - [Description](#Description)
+    - [Interface](#Interface)
+    - [Camera](#Camera)
+    - [Spectrometer](#Spectrometer)
+    - [Microfluidic system](#Microfluidic-system)
+    - [Arduino & DC motor](#Arduino-&-DC-motor)
+    - [Signal processing](#Signal-processing)
+      - [Camera image](#Camera-image)
+      - [Spectrometer image](#Spectrometer-image)
+    - [Protocols](#Protocols)
+ - [Usage](#Usage)
+ - [Authors](#Authors)
 
 <a id="Structure"></a>
 ## Structure
@@ -33,24 +44,37 @@ pip install name_of_the_library
 
 <a id="Description"></a>
 ## Description
+
+<a id="Interface"></a>
 ### Interface
 ![ROI in automatic mode](layout_figures/ROI_auto.jpg)
+
+<a id="Camera"></a>
 ### Camera
 
+<a id="Spectrometer"></a>
 ### Spectrometer
 
+<a id="Microfluidic-system"></a>
 ### Microfluidic system
 
+<a id="Arduino-&-DC-motor"></a>
 ### Arduino & DC motor
 
+
+<a id="Signal-processing"></a>
 ### Signal processing
+
+<a id="Camera-image"></a>
 #### Camera image
 
+<a id="Spectrometer-image"></a>
 #### Spectrometer image
 
-
+<a id="Protocols"></a>
 ### Protocols
 
+<a id="Usage"></a>
 ## Usage
 To run the GUI, you can use the following command in the Anaconda prompt after activating the environment:
 ```
@@ -58,6 +82,7 @@ python gui.py
 ```
 Be sure to check that the necessary devices (camera/spectrometer, pump, arduino) are connected to the computer before running the GUI.
 
+<a id="Authors"></a>
 ## Authors
 - [**Marin Bricq**](https://github.com/MBricq)
 - [**Arthur Eglin**](https://github.com/ArthurEglin)
