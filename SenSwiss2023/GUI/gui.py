@@ -25,7 +25,7 @@ import control_flir_camera
 import microflu
 import imgproc
 import arduino_control
-import layout as layout
+import layout
 
 # Used to display plot on interface
 class Canvas(FigureCanvasTkAgg):

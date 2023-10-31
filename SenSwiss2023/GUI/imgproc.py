@@ -208,9 +208,6 @@ def post_processing(time, data_to_fit, titles, mov_avg_size):
     fitted_data = np.concatenate(fitted_data)
     time_concat = np.concatenate(time_segments)
 
-    ### CONVERT THE FITTED DATA TO CONCENTRATION
-    ## INSERT BUTTON TO CHOOSE TIME INTERVAL FOR CONVERSION
-
     # Return concatenated data for debugging
     return fitted_data, time_concat
 
