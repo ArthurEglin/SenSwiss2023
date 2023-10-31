@@ -1,5 +1,11 @@
 # General user interface (GUI) repository of the 2023 SenSwiss Team
 
+**Table of content:**
+ - [Structure](#Structure)
+ - [Installation](#Installation)
+ - [Description](#Description)
+
+<a id="Structure"></a>
 ## Structure
 The GUI repository of the 2023 SenSwiss Team is organized as follows:
 - `image_saved`: stores the images taken by the camera or the spectrographs taken by the spectrometer during the experiments.
@@ -13,6 +19,7 @@ The GUI repository of the 2023 SenSwiss Team is organized as follows:
 - **layout.py**: contains the code to define the layout of the GUI
 - **microflu.py**: contains the code to control the microfluidic system
 
+<a id="Installation"></a>
 ## Installation
 To run the code, you will need to install several packages. The easiest way to do so is to use the Anaconda distribution. You can download it [here](https://www.anaconda.com/products/individual). Once Anaconda is installed, you can create a new environment and install the packages using the following commands in the Anaconda prompt:
 ```
@@ -24,13 +31,7 @@ Then, you can install the packages using the following commands:
 pip install name_of_the_library
 ```
 
-## Usage
-To run the GUI, you can use the following command in the Anaconda prompt after activating the environment:
-```
-python gui.py
-```
-Be sure to check that the necessary devices (camera/spectrometer, pump, arduino) are connected to the computer before running the GUI.
-
+<a id="Description"></a>
 ## Description
 ### Interface
 ![ROI in automatic mode](layout_figures/ROI_auto.jpg)
@@ -43,9 +44,19 @@ Be sure to check that the necessary devices (camera/spectrometer, pump, arduino)
 ### Arduino & DC motor
 
 ### Signal processing
+#### Camera image
+
+#### Spectrometer image
+
 
 ### Protocols
 
+## Usage
+To run the GUI, you can use the following command in the Anaconda prompt after activating the environment:
+```
+python gui.py
+```
+Be sure to check that the necessary devices (camera/spectrometer, pump, arduino) are connected to the computer before running the GUI.
 
 ## Authors
 - [**Marin Bricq**](https://github.com/MBricq)
