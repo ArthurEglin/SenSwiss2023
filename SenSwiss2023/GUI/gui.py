@@ -25,7 +25,7 @@ import control_flir_camera
 import microflu
 import imgproc
 import arduino_control
-import layout
+import layout as layout
 
 # Used to display plot on interface
 class Canvas(FigureCanvasTkAgg):
@@ -232,7 +232,7 @@ if __name__ == "__main__":
     
     # Logo
     logo_size: typing.Tuple[int, int] = (100, 40)
-    logo_im: Image.Image = Image.open(path + "/SenSwissLogo.png")
+    logo_im: Image.Image = Image.open(path + "/layout_figures/SenSwissLogo.png")
     logo_im = logo_im.resize(logo_size, resample=Image.BICUBIC)
 
     # Size of image displayed
