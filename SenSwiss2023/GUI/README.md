@@ -119,7 +119,12 @@ Be sure to check that the necessary devices (camera/spectrometer, pump, arduino)
 
 <a id="Results"></a>
 ## Results
-Explain the regression of the results obtained with the GUI to relate to the concentration of proteins in the sample.
+
+
+The initial plan involved fitting the segments of the signal with an exponential function after applying GFAP. The intention was to save the parameters of the exponential function for each segment and utilize them to train a Machine Learning model for predicting the concentration of the sample under examination. This approach required a substantial amount of data to be collected. Unfortunately, due to the challenges faced by the SenSwiss team in 2023, this data collection could not be accomplished. Nevertheless, the functions for fitting the exponential functions are stored in 'imgproc.py' and remain available for use by future teams.
+
+The classification of each sample (from Very Low to Very High Concentration) was hence computed by fitting two linear regression curves. 
+
 
 <a id="Authors"></a>
 ## Authors
