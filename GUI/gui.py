@@ -516,11 +516,11 @@ if __name__ == "__main__":
 
             if window["plotRaw"].get() == True:
                 if window["plotNormalized"].get() == True:
-                    updatePlot(spectrometer_fig, spectrometer_ax, ranged_intensities_spec, ranged_wavelengths, True, min_y, max_y, "Spectrometer measurements", "", "Intensity [a.u.]", ["Spectrometer", "Normalized"], ranged_normalized_intensities_spec)
+                    updatePlot(spectrometer_fig, spectrometer_ax, ranged_intensities_spec, ranged_wavelengths, True, min_y, max_y, "Real time measurement of average intensity", "Wavelength [nm]", "Intensity [a.u.]", ["Spectrometer", "Normalized"], ranged_normalized_intensities_spec)
                 else:
-                    updatePlot(spectrometer_fig, spectrometer_ax, ranged_intensities_spec, ranged_wavelengths, True, min_y, max_y, "Spectrometer measurements", "", "Intensity [a.u.]", ["Spectrometer"])
+                    updatePlot(spectrometer_fig, spectrometer_ax, ranged_intensities_spec, ranged_wavelengths, True, min_y, max_y, "Real time measurement of average intensity", "Wavelength [nm]", "Intensity [a.u.]", ["Spectrometer"])
             elif window["plotNormalized"].get() == True:
-                updatePlot(spectrometer_fig, spectrometer_ax, ranged_normalized_intensities_spec, ranged_wavelengths, True, min_y, max_y, "Spectrometer measurements", "", "Intensity [a.u.]", ["Normalized"])
+                updatePlot(spectrometer_fig, spectrometer_ax, ranged_normalized_intensities_spec, ranged_wavelengths, True, min_y, max_y, "Real time measurement of average intensity", "Wavelength [nm]", "Intensity [a.u.]", ["Normalized"])
             
             updatePlot(intensity_fig, intensity_ax, min_peak_wavelength, time_of_intensities_spec, auto_scale, min_y, max_y, "Shift of the absorption peak over time", "Time [s]", "Wavelength [nm]", legends=["Raw", "Average", "Centroids"], data_y_2=centroids, comments=comments, mov_avg_size=moving_average_size)
             last_acquisition_time = time.time()

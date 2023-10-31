@@ -1,4 +1,4 @@
-# General user interface (GUI) repository of the 2023 SenSwiss Team
+# Graphical user interface (GUI) repository of the 2023 SenSwiss Team
 
 **Table of content:**
  - [Structure](#Structure)
@@ -14,6 +14,7 @@
       - [Spectrometer image](#Spectrometer-image)
     - [Protocols](#Protocols)
  - [Usage](#Usage)
+ - [Results](#Results)
  - [Authors](#Authors)
 
 <a id="Structure"></a>
@@ -44,6 +45,13 @@ pip install name_of_the_library
 
 <a id="Description"></a>
 ## Description
+This miniprogram allow the user to control the different systems of the sensor and to perform the experiments. The GUI can be used in two modes: with a camera or with a spectrometer, depending on which measurement is better suited for the experiment. The GUI will then automatically adapt the interface to the chosen mode.
+
+The GUI is divided into 3 parts:
+- **Microfluidics** which controls the pump
+- **Measurement device** which controls either the camera or the spectrometer depending on which is pluged in, and procresses the signal to obtain a signal over time
+- **Motor control** which controls the DC motor to open or close the measurement chamber
+
 
 <a id="Interface"></a>
 ### Interface
@@ -81,6 +89,10 @@ To run the GUI, you can use the following command in the Anaconda prompt after a
 python gui.py
 ```
 Be sure to check that the necessary devices (camera/spectrometer, pump, arduino) are connected to the computer before running the GUI.
+
+<a id="Results"></a>
+## Results
+Explain the regression of the results obtained with the GUI to relate to the concentration of proteins in the sample.
 
 <a id="Authors"></a>
 ## Authors
