@@ -40,10 +40,6 @@ def create_layout(logo_size: typing.Tuple[int, int], camera_img_size: typing.Tup
             sg.Text("Basic Pump Controls", key="basicPumpControls"),
         ],
         [
-            sg.Button("Go to zero", key="goToZero"),
-            sg.Button("Reinitialize", key="reinit"),
-        ],
-        [
             sg.Input("", key='inputChosenValve', size=(6, 1)),
             sg.Button("Switch to Valve", key="switchValve"),
         ],

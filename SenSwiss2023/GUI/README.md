@@ -63,15 +63,38 @@ The microfluidic section contains all buttons to control the integrated pump sys
 
 The microfluidic system is highly customizable and allows for the choice of three modalities: **Manual**, **Semi-Automatic**, **Automatic**.
 
+In all modes, the following buttons are available:
+- `Reconnect pump`: reconnects the pump to the computer if it gets disconnected during the experiment
+- `Stop and trash`: stop the current pump command and trash the remaining volume in the trash reservoir (valve 1)
+- `Reinitialize`: reinitialize the pump system, i.e. set all valves to the initial position (valve 1)
+- `Kick out bubble`: send a short series of pulses to the pump to kick out any bubble in the microfluidic system, the user has to specify the input and output valves and then the program send preprogrammed instructions to the pump.
+
 #### Manual
 ![Microflu_manual](layout_figures/Microflu_manual.jpg)
 
-Every command can be added manually, by specifying the valve number, the action (Pick/Dispense), the volume and the the flowrate. The user can then click on the Add command button to add the command to the list of commands. The list of commands can be saved by clicking on the Save protocol button. The protocol will be saved in the protocols folder as a *.csv* file. The user can name the protocol file via the adjacent input field, in any case, the protocol will be saved. 
+Every command has to be defined manually one at a time. The possible commands are the following:
+- `Switch to valve`: the pump select the valve according to the user input 
+- `Set speed`: the user defines the flowrate of the pump in $\mu L$/min
+- `Pickup uL`: the user defines the volume to pick up (in $\mu L$) from the chosen valve
+- `Dispense uL`: the user defines the volume to dispense (in $\mu L$L) from the chosen valve
+- `Heat ON`: the user defines the temperature of the heating plate (in °C) and sets the heating plate ON
+- `Heat OFF`: the user sets the heating plate OFF
 
-#### Semi-Automatic
+#### Semi-automatic
 ![Microflu_semiauto](layout_figures/Microflu_semiauto.jpg)
 
+The semi-automatic mode allows the user to define a protocol of commands that will be executed sequentially. The user can add new command lines by clicking on the `+` button, and then specify the different inputs as follows:
+- `Port`: the user defines the valve to use
+- `Action`: the user selects the action to execute from the drop-down list (Pick or Dispense)
+- `Volume`: the user defines the volume to pick or dispense (in $\mu L$)
+- `Speed`: the user defines the flowrate of the pump (in $\mu L$/min)
+- `Title`: the user specify a title for the command line (optional), this title will be added to the data file of the experiment at the corresponding timepoint when the sample is dispensed into the chamber (the program automatically computes the required time given the volume and the flowrate and the fixed tubing length)
+- `Wait`: add a waiting step of a user specified duration (in miliseconds) before executing the next command line
+- `copy`: the copy checkbox allows to select the line to copy, the user can then paste the line by clicking on the `Copy commands` button
+- `Delete`: the user can delete the line by clicking on the `Delete` button
 
+The user can then select the command to add from the drop-down list. The user can then set the parameters of the command via the input fields. For example, if the user wants to pick up 10 $\mu L$ from valve 1 at a flowrate of 1000 $\mu L$/min, the user has to select the command `Pickup uL`, set the valve to 1
+, the volume and the the flowrate. The user can then click on the Add command button to add the command to the list of commands. The list of commands can be saved by clicking on the Save protocol button. The protocol will be saved in the protocols folder as a *.csv* file. The user can name the protocol file via the adjacent input field, in any case, the protocol will be saved. 
 #### Automatic
 ![Microflu_auto](layout_figures/Microflu_auto.jpg)
 The user can load a protocol by clicking on the Load protocol button. The user can then select the protocol to load from the list of protocols. The protocol will be loaded and displayed in the list of commands. The user can then edit the protocol and save it under a different name.
