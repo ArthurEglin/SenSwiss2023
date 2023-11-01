@@ -2,18 +2,18 @@
 
 **Table of content:**
 - [Graphical user interface (GUI) repository of the 2023 SenSwiss Team](#graphical-user-interface-gui-repository-of-the-2023-senswiss-team)
-- [Structure](#structure)
-- [Installation](#installation)
-- [Description](#description)
-  - [Interface](#interface)
-  - [Microfluidic system](#microfluidic-system)
-  - [Camera](#camera)
-  - [Spectrometer](#spectrometer)
-  - [Arduino \& DC motor](#arduino--dc-motor)
-- [Protocols](#protocols)
-- [Usage](#usage)
-- [Results](#results)
-- [Authors](#authors)
+  - [Structure](#structure)
+  - [Installation](#installation)
+  - [Description](#description)
+    - [Interface](#interface)
+    - [Microfluidic system](#microfluidic-system)
+    - [Camera](#camera)
+    - [Spectrometer](#spectrometer)
+    - [Arduino \& DC motor](#arduino--dc-motor)
+    - [Protocols](#protocols)
+  - [Usage](#usage)
+  - [Results](#results)
+  - [Authors](#authors)
 
 <a id="Structure"></a>
 ## Structure
@@ -117,6 +117,10 @@ Vertical lines are incorporated at the times of comments, enhancing its utility 
 
 <a id="Protocols"></a>
 ### Protocols
+
+The Software team's responsibilities included conducting various experiments with the biosensor, testing different protocols, and archiving the results. 
+
+During experiments, protocols can be inputted directly into the User Interface and saved in the 'protocols' folder. These protocols are stored in .csv files, making it possible to conveniently reload them in the GUI for future experiments, ultimately saving time. 
 
 <a id="Usage"></a>
 ## Usage
