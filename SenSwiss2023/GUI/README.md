@@ -165,25 +165,25 @@ The measuring chamber is opened and closed by a mechano-electrical simple system
 The user can control the DC motor via the `Motor` section in the GUI. The user can open or close the chamber by clicking on the `Open chamber` or `Close chamber` buttons. The user can also stop the motor at any time via the `Stop DC motor` button. If the Arduino gets disconnected, the user can reconnect it via the `Reconnect Arduino` button. The program will then automatically detect the Arduino and connect to it.
 
 ![Motor control](layout_figures/Motor_control.jpg)
+
 <a id="Protocols"></a>
 ### Protocols
 
-The Software team's responsibilities included conducting various experiments with the biosensor, testing different protocols, and archiving the results. 
+During experiments, protocols can be inputted directly into the User Interface and saved in the `protocols` folder. These protocols are stored in **.csv** files, making it possible to manually modify them if needed and reload them in the GUI for future experiments, ultimately saving a lot of time.
 
-During experiments, protocols can be inputted directly into the User Interface and saved in the 'protocols' folder. These protocols are stored in .csv files, making it possible to conveniently reload them in the GUI for future experiments, ultimately saving time. 
-
-
-Below an example of a protocol file is displayed ('Olygo_83cc.csv'):
+Below an example of a protocol file is displayed (**Olygo_83cc.csv**):
 
 ![Protocol](layout_figures/Protocol.png)
 
 The data in the table is structured as follows: 
 
-- The first column specifies the port at which the action is executed.
-- The second column indicates the type of action, which can be either "Pick" or "Dispense."
-- The third column provides the volume associated with the action.
-- The fourth column contains the flowrate for that particular action.
-- The fifth column is optional and serves as a title, which is essential for identifying specific segments of the signal to compute shifts and sample concentrations. The title of each command is visually represented in the plot as a vertical dashed line.
+- The first column specifies the valve at which the action is executed
+- The second column indicates the type of action, which can be either "Pick" or "Dispense"
+- The third column indicates the volume associated with the action
+- The fourth column contains the flowrate for that particular action
+- The fifth column is optional and serves as a title, which is essential for identifying specific segments of the signal to compute shifts and sample concentrations, the title of each command is visually represented in the plot as a vertical and labeled dashed line
+- The sixth column is optional and allows the user to specify a waiting time between two actions
+
 <a id="Usage"></a>
 ## Usage
 To run the GUI, you can use the following command in the Anaconda prompt after activating the environment:
@@ -193,16 +193,18 @@ python gui.py
 Be sure to check that the necessary devices (camera/spectrometer, pump, arduino) are connected to the computer before running the GUI.
 
 The procedure for running an experiment with the spectrometer is as follows:
-1. 
 
+1. insert the chip in the holder and place it on the rail, close the measurement chamber by clicking on the `Close chamber` button
 2. fill all the tubings with the appropriate buffers, for this the user can use prewritten protocols in the `protocols`` folder 
 3. fill the chambers with the appropriate buffers, for this the user can use prewritten protocols in the `protocols`` folder
 4. calibrate the optics
-  3.1 align the light beam to the center of the chamber and the reflected light beam to the center of the spectrometer
-  3.2 set dark field by clicking on the `Save dark field` button when the light beam is off
-  3.3 set flat field by clicking on the `Save flat field` button when the light beam is on and the polarizer is at 90° from its reference angle, the reference angle can either be for TE or TM light (depending on the grating orientation of the chip), but the flat field must always be the opposite of the reference angle (e.g. if the reference angle is for TE light, the flat field must be for TM light)
-4. 
-
+  4.1 align the light beam to the center of the chamber and the reflected light beam to the center of the spectrometer
+  4.2 set dark field by clicking on the `Save dark field` button when the light beam is off
+  4.3 set flat field by clicking on the `Save flat field` button when the light beam is on and the polarizer is at 90° from its reference angle, the reference angle can either be for TE or TM light (depending on the grating orientation of the chip), but the flat field must always be the opposite of the reference angle (e.g. if the reference angle is for TE light, the flat field must be for TM light)
+4. display the normalized spectrograph by clicking on the `Normalized` checkbox, then fix the window for the centroid computation by clicking on the `Reset mean peak` button
+5. write or select the protocol and execute it by clicking on the `Send` button
+6. compute the shift by clicking on the `Compute shift` button
+7. save the spectrograph and the plot by clicking on the `Save spectrograph` and `Save plot` buttons
 
 <a id="Results"></a>
 ## Results
