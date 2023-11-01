@@ -2,36 +2,18 @@
 
 **Table of content:**
 - [Graphical user interface (GUI) repository of the 2023 SenSwiss Team](#graphical-user-interface-gui-repository-of-the-2023-senswiss-team)
-<<<<<<< HEAD
   - [Structure](#structure)
   - [Installation](#installation)
   - [Description](#description)
     - [Interface](#interface)
+    - [Microfluidic system](#microfluidic-system)
     - [Camera](#camera)
     - [Spectrometer](#spectrometer)
-    - [Microfluidic system](#microfluidic-system)
     - [Arduino \& DC motor](#arduino--dc-motor)
-- [Signal processing](#signal-processing)
-  - [Camera image](#camera-image)
-  - [Spectrometer signal](#spectrometer-signal)
-    - [Centroids](#centroids)
     - [Protocols](#protocols)
+  - [Usage](#usage)
   - [Results](#results)
   - [Authors](#authors)
-=======
-- [Structure](#structure)
-- [Installation](#installation)
-- [Description](#description)
-  - [Interface](#interface)
-  - [Microfluidic system](#microfluidic-system)
-  - [Camera](#camera)
-  - [Spectrometer](#spectrometer)
-  - [Arduino \& DC motor](#arduino--dc-motor)
-- [Protocols](#protocols)
-- [Usage](#usage)
-- [Results](#results)
-- [Authors](#authors)
->>>>>>> afefb6a68c082dc9385ea0471307b810125b996b
 
 <a id="Structure"></a>
 ## Structure
