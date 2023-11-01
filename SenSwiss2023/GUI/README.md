@@ -175,7 +175,7 @@ During experiments, protocols can be inputted directly into the User Interface a
 
 Below an example of a protocol file is displayed ('Olygo_83cc.csv'):
 
-![Protocol](layout_figures/capture_ecran.png)
+![Protocol](layout_figures/Protocol.png)
 
 The data in the table is structured as follows: 
 
