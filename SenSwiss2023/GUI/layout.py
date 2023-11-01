@@ -186,6 +186,10 @@ def create_layout(logo_size: typing.Tuple[int, int], camera_img_size: typing.Tup
             sg.Button("Apply", key="applyWavelength"),
         ],
         [
+            sg.Input("20", key="movingAverage", size=(6, 1)),
+            sg.Button("Set moving average", key="setMovingAverage"),
+        ],
+        [
             sg.Input("100", key="SavGol", size=(8, 1)),
             sg.Button("Set SG window", key="setSGwindow"),
         ],
@@ -219,10 +223,6 @@ def create_layout(logo_size: typing.Tuple[int, int], camera_img_size: typing.Tup
             sg.Input("500", key="yAxisMin", size=(6, 1), use_readonly_for_disable=True),
             sg.Input("900", key="yAxisMax", size=(6, 1), use_readonly_for_disable=True),
             sg.Button("Apply", key="applyYAxis")
-        ],
-        [
-            sg.Input("20", key="movingAverage", size=(6, 1)),
-            sg.Button("Set moving average", key="setMovingAverage"),
         ],
         [
             sg.Button("Save plot", key="saveSpecPlot"),

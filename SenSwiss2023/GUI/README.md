@@ -10,7 +10,7 @@
     - [Camera](#camera)
     - [Spectrometer](#spectrometer)
     - [Arduino \& DC motor](#arduino--dc-motor)
-    - [Protocols](#protocols)
+  - [Protocols](#protocols)
   - [Usage](#usage)
   - [Results](#results)
   - [Authors](#authors)
@@ -101,20 +101,25 @@ The dark field and the flat field are to be measured at the beginning of the exp
 
 The idea of the measurement by spectrometry is to make use of the absorption peak shift in function of the sample concentration at the surface of the chip, thanks to the high signal enhancement effect of [surface plasmon resonance](https://en.wikipedia.org/wiki/Surface_plasmon_resonance). The absorption peak is detected by computing the minimum of the normalized spectrum. This signal is then displayed overtime on the bottom left window. As a good signal-to-noise ratio is crucial for optimal detection, different denoising methods have been implemented to improve the signal quality.
 
-Firstly, we implemented a simple moving average filter. This denoising method proved not to be effective enough. Hence a Savitzy-Golay filter was added to smooth the intensities signal before normalizing. The window can be chosen by the user via the `Set SG window` and its adjacent input field. The filtered signal is also plotted on the bottom left window.
+Firstly, we implemented a simple moving average filter. The window can be chosen by the user via the `Set moving average window` and its adjacent input field. The filtered signal is plotted on the bottom left window. This denoising method proved not to be effective enough. Hence a Savitzy-Golay filter was added to smooth the intensities signal before normalizing. The window can be chosen by the user via the `Set SG window` and its adjacent input field. The filtered signal is also plotted on the bottom left window.
 
-Having found the previous method ineffective, we implemented a last denoising filter. This involves calculating the centroid of the signal in a fixed wavelenghts window set by the user at the begining of the experiment during calibration. 
+Having found the previous methods ineffective, we implemented a last denoising filter. This involves calculating the centroid of the signal in a fixed wavelenghts window set by the user at the begining of the experiment during calibration. The user can set the window size via the input field `Window width for centroid` and click on the `Reset mean peak` button to set the window. The window will then be fixed around the the wavelength of the minimum intensity peak in the normalized spectrograph. This window is fixed for the entire experiment and then the program computes the centroid of the signal in this window. The centroid signal is then again displayed on the bottom left window. This method proved to be the most effective for denoising the signal.
 
+To better visualize the different event of the experiment (adding of certain buffers, reactants or sample), the user can add markers within the plot. To do so the user can simply insert the necessary comment via the `Add comment` button and the adjacent input field. The comment will be graphically added in the plot by a labeled vertical dashed line at the corresponding timepoint.
 
-################################
+If necessary, the user can clear the plot by clicking on the `Clear plot` button.
 
-Vertical lines are incorporated at the times of comments, enhancing its utility as a tool for visualizing data and comment annotations. The code for this can be found in the file `plotCentroids.py`.
+The user can fine tune the display of the processed signal by setting y-axis limits via the appropriate input fields (min and max), or can chose to set these values automatically by clicking on the `Auto` checkbox, the program will then automatically set the y-axis limits to the minimum and maximum values of the signal. The plot of the signal overtime can be saved via the `Save plot` button. The plot will be saved in the `plots_saved` folder as a **.csv** file. The user can name the plot file via the adjacent input field, in any case, the plot will be saved with the current date and time.
 
+Finally, to compute the shift in absorbance peak, the user has to mention the **reference** and **measure** events of the measurement (e.g. GFAP, STOP) via the two input fields and click on the `Compute shift` button. The program will then automatically measure the wavelength shift between the mean value (stable plateau) at the reference event and the mean value at the measure event, the code for this is in the `compute_shift` function in the **imgproc.py** file. This shift value can then be related to the sample concentration of analyte using the calibration curve.
 
 <a id="Arduino-&-DC-motor"></a>
 ### Arduino & DC motor
+The measuring chamber is opened and closed by a mechano-electrical simple system in order to ensure good reproducibility and ideal sealing of the chamber to avoid leaks in the microfluidics system. The system is composed of a DC motor simple gear system that allow vertical movement of the 3D printed chip holder. The DC motor is controlled by an Arduino Leonardo board. The Arduino code is contained in the [ARDUINO CONTROL](https://github.com/ArthurEglin/SenSwiss2023/tree/main/SenSwiss2023/ARDUINO%20CONTROL/src) folder.
 
+The user can control the DC motor via the `Motor` section in the GUI. The user can open or close the chamber by clicking on the `Open chamber` or `Close chamber` buttons. The user can also stop the motor at any time via the `Stop DC motor` button. If the Arduino gets disconnected, the user can reconnect it via the `Reconnect Arduino` button. The program will then automatically detect the Arduino and connect to it.
 
+![Motor control](layout_figures/Motor_control.jpg)
 <a id="Protocols"></a>
 ### Protocols
 

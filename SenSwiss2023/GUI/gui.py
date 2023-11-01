@@ -946,6 +946,7 @@ if __name__ == "__main__":
                 shift_cen = imgproc.compute_shift(time_of_intensities_spec, centroids, comments, moving_average_size, gfapKey, stopKey)
                 window['shiftTxt'].update("Shifts computed: min = " + str(shift_min) + "; centroid = " + str(shift_cen))
                 print("Shifts computed: min = " + str(shift_min) + "; centroid = " + str(shift_cen))
+                
         elif event == "acquisitionPeriod":
             try:
                 acqPeriod = float(window["acquistionPeriodInput"].get())
