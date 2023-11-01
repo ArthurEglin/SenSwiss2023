@@ -1,7 +1,7 @@
 # Graphical user interface (GUI) repository of the 2023 SenSwiss Team
 
 **Table of content:**
-- [Graphical user interface (GUI) repository of the 2023 SenSwiss Team](#graphical-user-interface-gui-repository-of-the-2023-senswiss-team)
+  - [Graphical user interface (GUI) repository of the 2023 SenSwiss Team](#graphical-user-interface-gui-repository-of-the-2023-senswiss-team)
   - [Structure](#structure)
   - [Installation](#installation)
   - [Description](#description)
