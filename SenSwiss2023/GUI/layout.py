@@ -169,11 +169,6 @@ def create_layout(logo_size: typing.Tuple[int, int], camera_img_size: typing.Tup
             sg.Button("Reconnect spectrometer", key="reconnectSpectrometer"),
         ],
         [
-            sg.Button("Save Spectrograph", key="saveSpec"),
-            sg.Text("Add to name of file (optional):"),
-            sg.Input("", key="specName", size=(10, 1)),
-        ],
-        [
             sg.Text("To plot: "),
             sg.Checkbox("Raw", key="plotRaw", default=True),
             sg.Checkbox("Normalized", key="plotNormalized"),
@@ -201,13 +196,12 @@ def create_layout(logo_size: typing.Tuple[int, int], camera_img_size: typing.Tup
             sg.Text("Not set", key="minPeakStatus")
         ],
         [
-            sg.Text("------------------------------------------------------------------------------------------------------------------------"),
+            sg.Button("Save Spectrograph", key="saveSpec"),
+            sg.Text("Add to name of file (optional):"),
+            sg.Input("", key="specName", size=(10, 1)),
         ],
         [
-            sg.Button("Save plot", key="saveSpecPlot"),
-            sg.Text("Add to name of file (optional):"),
-            sg.Input("", key="specPlotName", size=(10, 1)),
-            sg.Button("Clear plot", key="clearSpecPlot"),
+            sg.Text("------------------------------------------------------------------------------------------------------------------------"),
         ],
         [
             sg.Input("", key="plotComment", size=(10, 1)),
@@ -229,6 +223,12 @@ def create_layout(logo_size: typing.Tuple[int, int], camera_img_size: typing.Tup
         [
             sg.Input("20", key="movingAverage", size=(6, 1)),
             sg.Button("Set moving average", key="setMovingAverage"),
+        ],
+        [
+            sg.Button("Save plot", key="saveSpecPlot"),
+            sg.Text("Add to name of file (optional):"),
+            sg.Input("", key="specPlotName", size=(10, 1)),
+            sg.Button("Clear plot", key="clearSpecPlot"),
         ],
     ]
 

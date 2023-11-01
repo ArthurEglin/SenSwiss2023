@@ -10,11 +10,7 @@
   - [Camera](#camera)
   - [Spectrometer](#spectrometer)
   - [Arduino \& DC motor](#arduino--dc-motor)
-  - [Signal processing](#signal-processing)
-    - [Camera image](#camera-image)
-    - [Spectrometer signal](#spectrometer-signal)
-      - [Centroids](#centroids)
-      - [Protocols](#protocols)
+- [Protocols](#protocols)
 - [Usage](#usage)
 - [Results](#results)
 - [Authors](#authors)
@@ -71,8 +67,7 @@ GUI in camera mode:
 
 On the top left, the real time image of the camera ([FLIR Blackfly S USB3](https://www.flir.fr/products/blackfly-s-usb3/?vertical=machine%20vision&segment=iis))is displayed.
 
-
-In the command pannel on the right, in the section `Camera settings`, the user set different parameters to improve the signal reading. The program enables the extraction of a Region Of Interest (ROI) from the camera image, via intensity threshold filtering. The user can set the parameter for the detection of the ROI by changing the `Kernel size`, the `Number of dilations` and the `Threshold value`. The program will then apply a gaussian smoothing (of empirical size (15,15)), compute a threshold mask from the smoothed image, dilate the mask a certain number of times with the squared kernel and determine the ROI as the centroid of the mask image (via the `cv2.moments` function). The ROI is then displayed on the camera image (top left). It can also be set manually by the user by clicking on the camera image. The ROI's shape (rectangular or cicular) and shape's parameters can be set by the user via the appropriate drop-down list or input fields.
+In the command pannel on the right, in the section `Camera settings`, the user can set different parameters to improve the signal reading and control the camera. The program enables the extraction of a Region Of Interest (ROI) from the camera image, via intensity threshold filtering. The user can set the parameter for the detection of the ROI by changing the `Kernel size`, the `Number of dilations` and the `Threshold value`. The program will then apply a gaussian smoothing (of empirical size (15,15)), compute a threshold mask from the smoothed image, dilate the mask a certain number of times with the squared kernel and determine the ROI as the centroid of the mask image (via the `cv2.moments` function). The ROI is then displayed on the camera image (top left). It can also be set manually by the user by clicking on the camera image. The ROI's shape (rectangular or cicular) and shape's parameters can be set by the user via the appropriate drop-down list or input fields.
 
 The ROI is then used to compute the signal by simply averaging the intensity over the ROI surface. This signal is then displayed overtime in relative 8 bits intensity pixel level unit on the bottom left window.
 
@@ -89,29 +84,22 @@ The original idea was to use the intensity of the optical signal measured by a c
 GUI in spectrometer mode:
 ![ROI in automatic mode](layout_figures/GUI_general.jpg)
 
+On the top left, the real time spectrograph of the spectrometer ([MAYA 2000 PRO](https://www.gmp.ch/spectroscopy/spectrometer/high-sensitivity-uv-spectrometers-maya))is displayed.
 
+In the command pannel on the right, in the section `Spectrometer settings`, the user can set different parameters to improve the signal reading and control the spectrometer.
 
-<a id="Arduino-&-DC-motor"></a>
-### Arduino & DC motor
+The sampling period of the spectrometer signal can be set via the button `Acquisition period`. By default the sampling period is at 0.5 sec which is a good compromise between the signal quality and the computational cost.
 
+In case the spectrometer gets unpluged, the user can reconnect the spectrometer via the `Reconnect spectrometer` button. The program will then automatically detect the spectrometer and connect to it.
 
-<a id="Signal-processing"></a>
+The signal of the spectrometer (intensity spectrum along wavelengths from 500 to 900 nm) is process via the following normalization step:
 
-### Signal processing
+% plot an equation in latex in bigger size not in italic
+$$\text{normalized\_intensities\_spec} = \frac{\test{intensities\_spec} - \text{dark\_field}}{\text{flat\_field} - \text{dark\_field}}  \text{normalize\_gain}$$
 
-The GUI enables recognition of the device connected (camera/spectrometer) and is complete of functions specific to handle the modality chosen. 
-
-### Camera image
-
-
-
-## Spectrometer signal
-
-The spectrometer employed by the SenSwiss team 2023 is MAYA2000PR0. The spectrometer connected to the computer gets recognized and the signal is acquired. 
+where $\text{intensities\_spec}$ is the signal of the spectrometer, $\text{dark\_field}$ is the dark field of the spectrometer, $\text{flat\_field}$ is the flat field of the spectrometer and $\text{normalize\_gain}$ is a normalization gain that can be set by the user via the `Normalize gain` input field. The dark and flat fields are saved (by pressing a button on the GUI), allowing to normalize the signal. The signal is then plotted in a top left window. 
 
 The signal from the spectrometer is low pass filtered. The dark and flat fields are saved (by pressing a button on the GUI), allowing to normalize the signal. The signal is then plotted in a top left window.
-\usepackage[textwidth=8cm]{geometry}
-\usepackage{amsmath}
 
 $\text{normalized\_intensities\_spec} = \frac{\test{intensities\_spec} - \text{dark\_field}}{\text{flat\_field} - \text{dark\_field}}  \text{normalize\_gain}$
 
@@ -121,11 +109,11 @@ As a good Signal-to-Noise ratio is crucial for optimal detection, different  den
 
 Firstly, we implemented a simple moving average filter. The filter is applied to the signal and the result is plotted in a top right window. This denoising method proved not to be effective enough. Hence a Savitzy-Golay filter was added to smooth the intensities signal before normalizing. The window can be chosen by the user. The result is plotted in a bottom left window.
 
-### Centroids
-
 Having found the previous method ineffective, we resorted to computing centroids. This involves calculating a moving average for centroids and then plotting either centroids or wavelength data over time. Vertical lines are incorporated at the times of comments, enhancing its utility as a tool for visualizing data and comment annotations. The code for this can be found in the file `plotCentroids.py`.
 
 
+<a id="Arduino-&-DC-motor"></a>
+### Arduino & DC motor
 
 
 <a id="Protocols"></a>
