@@ -82,7 +82,6 @@ The GUI enables recognition of the device connected (camera/spectrometer) and is
 
 The code enables the extraction of a Region Of Interest (ROI) from the camera image, facilitating saving and display in a separate window. It involves image filtering and thresholding, followed by moment calculations. Furthermore, the ROI can be tailored to various shapes like circles or rectangles.The average intensity is computed and returned.
 
-
 The original idea was to use the intensity of the ROI to detect the concentration of the sample. However, this method was found to not be sensitive enough. Hence, we decided to rely on the wavelenght shift, measured through the spectrometer, to detect the concentration of the sample.
 
 ## Spectrometer signal
@@ -91,7 +90,7 @@ The spectrometer employed by the SenSwiss team 2023 is MAYA2000PR0. The spectrom
 
 The signal from the spectrometer is low pass filtered. The dark and flat fields are saved (by pressing a button on the GUI), allowing to normalize the signal. The signal is then plotted in a top left window.
 
-normalized_intensities_spec = (intensities_spec - dark_field) / (flat_field - dark_field) * normalize_gain
+$\text{normalized\_intensities\_spec} = \frac{\test{intensities\_spec} - \text{dark\_field}}{\text{flat\_field} - \text{dark\_field}}  \text{normalize\_gain}$
 
 The peaks are computed and the wavelength shift is calculated. The shift of the absorption peak is then displayed in the bottom left window of the GUI.
 
