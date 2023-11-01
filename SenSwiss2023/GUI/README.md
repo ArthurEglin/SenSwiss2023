@@ -59,7 +59,7 @@ The GUI is presented as follows, with on the left, the image/spectrograph and th
 ### Microfluidic system
 The microfluidic section contains all buttons to control the integrated pump system ([AMF LSPone](https://amf.ch/produit/lspone-laboratory-syringe-pump/)). The pump is a 12 valves microfluidic system that allows to pick and dispense a volume of 8-250 mL at a flowrate of 25-7'500 $\mu L$/min.
 
-The Microfluidic is highly customizable and allows for the choice of three modalities: *Manual, **Semi-Automatic, **Automatic*.
+The microfluidic system is highly customizable and allows for the choice of three modalities: *Manual, **Semi-Automatic, **Automatic*.
 
 #### Manual
 
