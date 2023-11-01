@@ -8,6 +8,7 @@
     - [Interface](#interface)
     - [Microfluidic system](#microfluidic-system)
       - [Manual](#manual)
+      - [Semi-automatic](#semi-automatic)
       - [Automatic](#automatic)
     - [Camera](#camera)
     - [Spectrometer](#spectrometer)
@@ -166,6 +167,18 @@ The Software team's responsibilities included conducting various experiments wit
 
 During experiments, protocols can be inputted directly into the User Interface and saved in the 'protocols' folder. These protocols are stored in .csv files, making it possible to conveniently reload them in the GUI for future experiments, ultimately saving time. 
 
+
+Below an example of a protocol file is displayed ('Olygo_83cc.csv'):
+
+![Protocol](layout_figures/capture_ecran.png)
+
+The data in the table is structured as follows: 
+
+- The first column specifies the port at which the action is executed.
+- The second column indicates the type of action, which can be either "Pick" or "Dispense."
+- The third column provides the volume associated with the action.
+- The fourth column contains the flowrate for that particular action.
+- The fifth column is optional and serves as a title, which is essential for identifying specific segments of the signal to compute shifts and sample concentrations. The title of each command is visually represented in the plot as a vertical dashed line.
 <a id="Usage"></a>
 ## Usage
 To run the GUI, you can use the following command in the Anaconda prompt after activating the environment:
