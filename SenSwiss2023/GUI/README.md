@@ -61,11 +61,28 @@ The GUI is presented as follows, with on the left, the image/spectrograph and th
 
 <a id="Microfluidic-system"></a>
 ### Microfluidic system
+The microfluidic section contains all buttons to control the integrated pump system ([AMF LSPone](https://amf.ch/produit/lspone-laboratory-syringe-pump/)). The pump is a 12 valves microfluidic system that allows to pick and dispense a volume of 8-250 mL at a flowrate of 25-7'500 $\mu L$/min.
+
 
 <a id="Camera"></a>
 ### Camera
 GUI in camera mode:
 ![ROI in automatic mode](layout_figures/ROI_auto.jpg)
+
+On the top left, the real time image of the camera ([FLIR Blackfly S USB3](https://www.flir.fr/products/blackfly-s-usb3/?vertical=machine%20vision&segment=iis))is displayed.
+
+
+In the command pannel on the right, in the section `Camera settings`, the user set different parameters to improve the signal reading. The program enables the extraction of a Region Of Interest (ROI) from the camera image, via intensity threshold filtering. The user can set the parameter for the detection of the ROI by changing the `Kernel size`, the `Number of dilations` and the `Threshold value`. The program will then apply a gaussian smoothing (of empirical size (15,15)), compute a threshold mask from the smoothed image, dilate the mask a certain number of times with the squared kernel and determine the ROI as the centroid of the mask image (via the `cv2.moments` function). The ROI is then displayed on the camera image (top left). It can also be set manually by the user by clicking on the camera image. The ROI's shape (rectangular or cicular) and shape's parameters can be set by the user via the appropriate drop-down list or input fields.
+
+The ROI is then used to compute the signal by simply averaging the intensity over the ROI surface. This signal is then displayed overtime in relative 8 bits intensity pixel level unit on the bottom left window.
+
+The user can also set specific camera parameters such as the `Exposure time` and the `Gain` via the appropriate input fields. These parameters vary the intensity of the signal (the higher the exposure time and the gain, the higher the intensity of the signal).
+
+The user can save a picture of the camera image by clicking on the `Save image` button. The image will be saved in the `image_saved` folder as a **.png** file. The user can name the image file via the adjacent input field, in any case, the image will be saved with the current date and time.
+
+Finally, the user can fine tune the display of the processed signal by setting y-axis limits via the appropriate input fields (min and max), or can chose to set these values automatically by clicking on the `Auto` checkbox, the program will then automatically set the y-axis limits to the minimum and maximum values of the signal. The plot of the signal overtime can be saved via the `Save plot` button. The plot will be saved in the `plots_saved` folder as a **.csv** file. The user can name the plot file via the adjacent input field, in any case, the plot will be saved with the current date and time.
+
+The original idea was to use the intensity of the optical signal measured by a camera to detect the concentration of the sample. However, this method was found to be not sensitive enough. Hence, we decided to rely on the wavelenght shift, measured by a spectrometer to detect the concentration of the sample.
 
 <a id="Spectrometer"></a>
 ### Spectrometer
@@ -80,15 +97,13 @@ GUI in spectrometer mode:
 
 <a id="Signal-processing"></a>
 
-# Signal processing
+### Signal processing
 
 The GUI enables recognition of the device connected (camera/spectrometer) and is complete of functions specific to handle the modality chosen. 
 
-## Camera image
+### Camera image
 
-The code enables the extraction of a Region Of Interest (ROI) from the camera image, facilitating saving and display in a separate window. It involves image filtering and thresholding, followed by moment calculations. Furthermore, the ROI can be tailored to various shapes like circles or rectangles.The average intensity is computed and returned.
 
-The original idea was to use the intensity of the ROI to detect the concentration of the sample. However, this method was found to not be sensitive enough. Hence, we decided to rely on the wavelenght shift, measured through the spectrometer, to detect the concentration of the sample.
 
 ## Spectrometer signal
 
