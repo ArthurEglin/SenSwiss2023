@@ -94,7 +94,7 @@ In case the spectrometer gets unpluged, the user can reconnect the spectrometer 
 
 The signal of the spectrometer (intensity spectrum along wavelengths from 500 to 900 nm) is process via the following normalization step:
 
-$$normalized\_intensities\_spec = \frac{intensities\_spec\ -\ dark\_field}{flat\_field \ -\ dark\_field}  \ normalize\_gain$$
+$$normalized\ intensity\ spectrum = \frac{intensity\ spectrum\ -\ dark\ field}{flat\ field \ -\ dark\ field}  \ normalize\ gain$$
 
 
 The signal from the spectrometer is low pass filtered. The dark and flat fields are saved (by pressing a button on the GUI), allowing to normalize the signal. The signal is then plotted in a top left window.
