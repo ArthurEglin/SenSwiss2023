@@ -192,6 +192,18 @@ python gui.py
 ```
 Be sure to check that the necessary devices (camera/spectrometer, pump, arduino) are connected to the computer before running the GUI.
 
+The procedure for running an experiment with the spectrometer is as follows:
+1. 
+
+2. fill all the tubings with the appropriate buffers, for this the user can use prewritten protocols in the `protocols`` folder 
+3. fill the chambers with the appropriate buffers, for this the user can use prewritten protocols in the `protocols`` folder
+4. calibrate the optics
+  3.1 align the light beam to the center of the chamber and the reflected light beam to the center of the spectrometer
+  3.2 set dark field by clicking on the `Save dark field` button when the light beam is off
+  3.3 set flat field by clicking on the `Save flat field` button when the light beam is on and the polarizer is at 90° from its reference angle, the reference angle can either be for TE or TM light (depending on the grating orientation of the chip), but the flat field must always be the opposite of the reference angle (e.g. if the reference angle is for TE light, the flat field must be for TM light)
+4. 
+
+
 <a id="Results"></a>
 ## Results
 
