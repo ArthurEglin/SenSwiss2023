@@ -2,6 +2,7 @@
 
 **Table of content:**
 - [Graphical user interface (GUI) repository of the 2023 SenSwiss Team](#graphical-user-interface-gui-repository-of-the-2023-senswiss-team)
+<<<<<<< HEAD
   - [Structure](#structure)
   - [Installation](#installation)
   - [Description](#description)
@@ -17,6 +18,20 @@
     - [Protocols](#protocols)
   - [Results](#results)
   - [Authors](#authors)
+=======
+- [Structure](#structure)
+- [Installation](#installation)
+- [Description](#description)
+  - [Interface](#interface)
+  - [Microfluidic system](#microfluidic-system)
+  - [Camera](#camera)
+  - [Spectrometer](#spectrometer)
+  - [Arduino \& DC motor](#arduino--dc-motor)
+- [Protocols](#protocols)
+- [Usage](#usage)
+- [Results](#results)
+- [Authors](#authors)
+>>>>>>> afefb6a68c082dc9385ea0471307b810125b996b
 
 <a id="Structure"></a>
 ## Structure
@@ -46,7 +61,7 @@ pip install name_of_the_library
 
 <a id="Description"></a>
 ## Description
-This miniprogram allow the user to control the different systems of the sensor and to perform the experiments. The GUI can be used in two modes: with a camera or with a spectrometer, depending on which measurement is better suited for the experiment. The GUI will then automatically adapt the interface to the chosen mode.
+This miniprogram allow the user to control the different systems of the sensor and to perform the experiments. The GUI can be used in two modes: with a camera or with a spectrometer, depending on which measurement is better suited for the experiment. The GUI will then automatically adapt the interface to the pluged in measurement device.
 
 The GUI is divided into 3 parts:
 - **Microfluidics** which controls the pump
@@ -56,41 +71,52 @@ The GUI is divided into 3 parts:
 
 <a id="Interface"></a>
 ### Interface
-![ROI in automatic mode](layout_figures/ROI_auto.jpg)
-
-<a id="Camera"></a>
-### Camera
-
-<a id="Spectrometer"></a>
-### Spectrometer
+The GUI is presented as follows, with on the left, the image/spectrograph and the signal over time, and on the right, the control buttons and the parameters to set.
 
 <a id="Microfluidic-system"></a>
 ### Microfluidic system
-
-<a id="Arduino-&-DC-motor"></a>
-### Arduino & DC motor
+The microfluidic section contains all buttons to control the integrated pump system ([AMF LSPone](https://amf.ch/produit/lspone-laboratory-syringe-pump/)). The pump is a 12 valves microfluidic system that allows to pick and dispense a volume of 8-250 mL at a flowrate of 25-7'500 $\mu L$/min.
 
 
-<a id="Signal-processing"></a>
+<a id="Camera"></a>
+### Camera
+GUI in camera mode:
+![ROI in automatic mode](layout_figures/ROI_auto.jpg)
 
-# Signal processing
+On the top left, the real time image of the camera ([FLIR Blackfly S USB3](https://www.flir.fr/products/blackfly-s-usb3/?vertical=machine%20vision&segment=iis))is displayed.
 
-The GUI enables recognition of the device connected (camera/spectrometer) and is complete of functions specific to handle the modality chosen. 
+In the command pannel on the right, in the section `Camera settings`, the user can set different parameters to improve the signal reading and control the camera. The program enables the extraction of a Region Of Interest (ROI) from the camera image, via intensity threshold filtering. The user can set the parameter for the detection of the ROI by changing the `Kernel size`, the `Number of dilations` and the `Threshold value`. The program will then apply a gaussian smoothing (of empirical size (15,15)), compute a threshold mask from the smoothed image, dilate the mask a certain number of times with the squared kernel and determine the ROI as the centroid of the mask image (via the `cv2.moments` function). The ROI is then displayed on the camera image (top left). It can also be set manually by the user by clicking on the camera image. The ROI's shape (rectangular or cicular) and shape's parameters can be set by the user via the appropriate drop-down list or input fields.
 
-## Camera image
+The ROI is then used to compute the signal by simply averaging the intensity over the ROI surface. This signal is then displayed overtime in relative 8 bits intensity pixel level unit on the bottom left window.
 
-The code enables the extraction of a Region Of Interest (ROI) from the camera image, facilitating saving and display in a separate window. It involves image filtering and thresholding, followed by moment calculations. Furthermore, the ROI can be tailored to various shapes like circles or rectangles.The average intensity is computed and returned.
+The user can also set specific camera parameters such as the `Exposure time` and the `Gain` via the appropriate input fields. These parameters vary the intensity of the signal (the higher the exposure time and the gain, the higher the intensity of the signal).
 
+The user can save a picture of the camera image by clicking on the `Save image` button. The image will be saved in the `image_saved` folder as a **.png** file. The user can name the image file via the adjacent input field, in any case, the image will be saved with the current date and time.
 
-The original idea was to use the intensity of the ROI to detect the concentration of the sample. However, this method was found to not be sensitive enough. Hence, we decided to rely on the wavelenght shift, measured through the spectrometer, to detect the concentration of the sample.
+Finally, the user can fine tune the display of the processed signal by setting y-axis limits via the appropriate input fields (min and max), or can chose to set these values automatically by clicking on the `Auto` checkbox, the program will then automatically set the y-axis limits to the minimum and maximum values of the signal. The plot of the signal overtime can be saved via the `Save plot` button. The plot will be saved in the `plots_saved` folder as a **.csv** file. The user can name the plot file via the adjacent input field, in any case, the plot will be saved with the current date and time.
 
-## Spectrometer signal
+The original idea was to use the intensity of the optical signal measured by a camera to detect the concentration of the sample. However, this method was found to be not sensitive enough. Hence, we decided to rely on the wavelenght shift, measured by a spectrometer to detect the concentration of the sample.
 
-The spectrometer employed by the SenSwiss team 2023 is MAYA2000PR0. The spectrometer connected to the computer gets recognized and the signal is acquired. 
+<a id="Spectrometer"></a>
+### Spectrometer
+GUI in spectrometer mode:
+![ROI in automatic mode](layout_figures/GUI_general.jpg)
+
+On the top left, the real time spectrograph of the spectrometer ([MAYA 2000 PRO](https://www.gmp.ch/spectroscopy/spectrometer/high-sensitivity-uv-spectrometers-maya))is displayed.
+
+In the command pannel on the right, in the section `Spectrometer settings`, the user can set different parameters to improve the signal reading and control the spectrometer.
+
+The sampling period of the spectrometer signal can be set via the button `Acquisition period`. By default the sampling period is at 0.5 sec which is a good compromise between the signal quality and the computational cost.
+
+In case the spectrometer gets unpluged, the user can reconnect the spectrometer via the `Reconnect spectrometer` button. The program will then automatically detect the spectrometer and connect to it.
+
+The signal of the spectrometer (intensity spectrum along wavelengths from 500 to 900 nm) is process via the following normalization step:
+
+$$normalized\ intensity\ spectrum = \frac{intensity\ spectrum\ -\ dark\ field}{flat\ field \ -\ dark\ field}  \ normalize\ gain$$
+
 
 The signal from the spectrometer is low pass filtered. The dark and flat fields are saved (by pressing a button on the GUI), allowing to normalize the signal. The signal is then plotted in a top left window.
 
-normalized_intensities_spec = (intensities_spec - dark_field) / (flat_field - dark_field) * normalize_gain
 
 The peaks are computed and the wavelength shift is calculated. The shift of the absorption peak is then displayed in the bottom left window of the GUI.
 
@@ -98,11 +124,11 @@ As a good Signal-to-Noise ratio is crucial for optimal detection, different  den
 
 Firstly, we implemented a simple moving average filter. The filter is applied to the signal and the result is plotted in a top right window. This denoising method proved not to be effective enough. Hence a Savitzy-Golay filter was added to smooth the intensities signal before normalizing. The window can be chosen by the user. The result is plotted in a bottom left window.
 
-### Centroids
-
 Having found the previous method ineffective, we resorted to computing centroids. This involves calculating a moving average for centroids and then plotting either centroids or wavelength data over time. Vertical lines are incorporated at the times of comments, enhancing its utility as a tool for visualizing data and comment annotations. The code for this can be found in the file `plotCentroids.py`.
 
 
+<a id="Arduino-&-DC-motor"></a>
+### Arduino & DC motor
 
 
 <a id="Protocols"></a>
