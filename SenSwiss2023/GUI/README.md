@@ -96,17 +96,19 @@ The signal of the spectrometer (intensity spectrum along wavelengths from 500 to
 
 $$normalized\ intensity\ spectrum = \frac{intensity\ spectrum\ -\ dark\ field}{flat\ field \ -\ dark\ field}  \ normalize\ gain$$
 
+Where the **intensity spectrum** (`intensities_spec`) is the raw signal from the spectrometer, the **dark field** (`dark_field`) is the signal of the spectrometer when the light source is off, the **flat field** (`flat_field`) is the signal of the spectrometer when the light source is on and the polarizer is at 90° from its reference angle for the true measurements (the user has to manually set the polarizer at 90° to save the flat field), and the **normalize gain** (`normalize_gain`) is a constant computed as the mean value of the difference between the flat and dark fields (flat field - dark field). 
+The dark field and the flat field are to be measured at the beginning of the experiment via the appropriate buttons and are stored in memory for the entire experiment. The flat field corresponds to the optical signal as if the target (sample and chip) acted as a perfect mirror. This normalization allows to get rid of the background signal and improves the sensitivity. The normalized spectrum is then displayed in relative intensity level unit on the top left window. The user can save the spectrograph by clicking on the `Save spectrograph` button. The spectrograph will be saved in the `image_saved` folder as a **.png** file. The user can name the spectrograph file via the adjacent input field, in any case, the spectrograph will be saved with the current date and time.
 
-The signal from the spectrometer is low pass filtered. The dark and flat fields are saved (by pressing a button on the GUI), allowing to normalize the signal. The signal is then plotted in a top left window.
+The idea of the measurement by spectrometry is to make use of the absorption peak shift in function of the sample concentration at the surface of the chip, thanks to the high signal enhancement effect of [surface plasmon resonance](https://en.wikipedia.org/wiki/Surface_plasmon_resonance). The absorption peak is detected by computing the minimum of the normalized spectrum. This signal is then displayed overtime on the bottom left window. As a good signal-to-noise ratio is crucial for optimal detection, different denoising methods have been implemented to improve the signal quality.
+
+Firstly, we implemented a simple moving average filter. This denoising method proved not to be effective enough. Hence a Savitzy-Golay filter was added to smooth the intensities signal before normalizing. The window can be chosen by the user via the `Set SG window` and its adjacent input field. The filtered signal is also plotted on the bottom left window.
+
+Having found the previous method ineffective, we implemented a last denoising filter. This involves calculating the centroid of the signal in a fixed wavelenghts window set by the user at the begining of the experiment during calibration. 
 
 
-The peaks are computed and the wavelength shift is calculated. The shift of the absorption peak is then displayed in the bottom left window of the GUI.
+################################
 
-As a good Signal-to-Noise ratio is crucial for optimal detection, different  denoising methods have been implemented.
-
-Firstly, we implemented a simple moving average filter. The filter is applied to the signal and the result is plotted in a top right window. This denoising method proved not to be effective enough. Hence a Savitzy-Golay filter was added to smooth the intensities signal before normalizing. The window can be chosen by the user. The result is plotted in a bottom left window.
-
-Having found the previous method ineffective, we resorted to computing centroids. This involves calculating a moving average for centroids and then plotting either centroids or wavelength data over time. Vertical lines are incorporated at the times of comments, enhancing its utility as a tool for visualizing data and comment annotations. The code for this can be found in the file `plotCentroids.py`.
+Vertical lines are incorporated at the times of comments, enhancing its utility as a tool for visualizing data and comment annotations. The code for this can be found in the file `plotCentroids.py`.
 
 
 <a id="Arduino-&-DC-motor"></a>
