@@ -94,14 +94,11 @@ In case the spectrometer gets unpluged, the user can reconnect the spectrometer 
 
 The signal of the spectrometer (intensity spectrum along wavelengths from 500 to 900 nm) is process via the following normalization step:
 
-% plot an equation in latex in bigger size not in italic
-$$\text{normalized\_intensities\_spec} = \frac{\test{intensities\_spec} - \text{dark\_field}}{\text{flat\_field} - \text{dark\_field}}  \text{normalize\_gain}$$
+$$normalized\_intensities\_spec = \frac{intensities\_spec\ -\ dark\_field}{flat\_field \ -\ dark\_field}  \ normalize\_gain$$
 
-where $\text{intensities\_spec}$ is the signal of the spectrometer, $\text{dark\_field}$ is the dark field of the spectrometer, $\text{flat\_field}$ is the flat field of the spectrometer and $\text{normalize\_gain}$ is a normalization gain that can be set by the user via the `Normalize gain` input field. The dark and flat fields are saved (by pressing a button on the GUI), allowing to normalize the signal. The signal is then plotted in a top left window. 
 
 The signal from the spectrometer is low pass filtered. The dark and flat fields are saved (by pressing a button on the GUI), allowing to normalize the signal. The signal is then plotted in a top left window.
 
-$\text{normalized\_intensities\_spec} = \frac{\test{intensities\_spec} - \text{dark\_field}}{\text{flat\_field} - \text{dark\_field}}  \text{normalize\_gain}$
 
 The peaks are computed and the wavelength shift is calculated. The shift of the absorption peak is then displayed in the bottom left window of the GUI.
 
