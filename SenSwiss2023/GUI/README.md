@@ -93,11 +93,16 @@ The semi-automatic mode allows the user to define a protocol of commands that wi
 - `copy`: the copy checkbox allows to select the line to copy, the user can then paste the line by clicking on the `Copy commands` button
 - `Delete`: the user can delete the line by clicking on the `Delete` button
 
-The user can then select the command to add from the drop-down list. The user can then set the parameters of the command via the input fields. For example, if the user wants to pick up 10 $\mu L$ from valve 1 at a flowrate of 1000 $\mu L$/min, the user has to select the command `Pickup uL`, set the valve to 1
-, the volume and the the flowrate. The user can then click on the Add command button to add the command to the list of commands. The list of commands can be saved by clicking on the Save protocol button. The protocol will be saved in the protocols folder as a *.csv* file. The user can name the protocol file via the adjacent input field, in any case, the protocol will be saved. 
+The list of commands can be saved by clicking on the `Save commands` button with a file name specified by the user. The protocol will be saved in the protocols folder as a **.csv** file. If the user loads a protocol from the automatic section, the program will automatically load the protocol and display it in the list of commands in the semi-automatic section. The user can then edit the protocol and save it under a different name.
+
+The user can clear the whole command pannel by clicking on the `Delete all` button.
+
+Finally, the user can send the protocol to the pump for it to be sequentially executed by clicking on the `Send` button. The program will concatenate all the command **strings** into a big command **string** and send it to the pump which will then dissect it and execute the instruction one by one. This communication way prevents too long lists of commands. An empirical maximum is at 22 command lines.
+
 #### Automatic
 ![Microflu_auto](layout_figures/Microflu_auto.jpg)
-The user can load a protocol by clicking on the Load protocol button. The user can then select the protocol to load from the list of protocols. The protocol will be loaded and displayed in the list of commands. The user can then edit the protocol and save it under a different name.
+
+The automatic mode allows to execute prewritten protocols. The user can either select and directly send a protocol to the pump for it to be excecuted via the `Send protocol` button, or the user can also select and load a protocol into the semi-automatic section by clicking on the `Load protocol` button. The protocol will be loaded and displayed in the list of commands. The user can then edit the protocol and save it under a different name.
 
 <a id="Camera"></a>
 ### Camera

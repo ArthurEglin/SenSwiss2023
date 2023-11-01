@@ -544,13 +544,6 @@ if __name__ == "__main__":
             else:
                 print("Check pump connection")
 
-        elif event == "fillTubes":
-            if pump_connected == True:
-                seq = microflu.get_kick_bubble_seq()
-                pump_connected = microflu.write_sequence_to_pump(lsp, seq)
-            else:
-                print("Check pump connection")
-
         elif event == "functionalizeChip":
             if pump_connected == True:
                 channel_chosen = window["functionalizeChannel"].get()
@@ -946,7 +939,7 @@ if __name__ == "__main__":
                 shift_cen = imgproc.compute_shift(time_of_intensities_spec, centroids, comments, moving_average_size, gfapKey, stopKey)
                 window['shiftTxt'].update("Shifts computed: min = " + str(shift_min) + "; centroid = " + str(shift_cen))
                 print("Shifts computed: min = " + str(shift_min) + "; centroid = " + str(shift_cen))
-                
+
         elif event == "acquisitionPeriod":
             try:
                 acqPeriod = float(window["acquistionPeriodInput"].get())

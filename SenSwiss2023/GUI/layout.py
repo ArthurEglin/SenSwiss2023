@@ -84,9 +84,6 @@ def create_layout(logo_size: typing.Tuple[int, int], camera_img_size: typing.Tup
             sg.Text("Coded sequences for the pump"),
         ],
         [
-            sg.Button("Fill tubes", key="fillTubes"),
-        ],
-        [
             sg.Button("Send protocol", key="sendProtocol"),
             sg.Combo(gui.protocol_list, default_value="", key="protocolAuto", size=(100, 1)),
         ],
