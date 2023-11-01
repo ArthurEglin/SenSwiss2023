@@ -1,7 +1,7 @@
 # Graphical user interface (GUI) repository of the 2023 SenSwiss Team
 
 **Table of content:**
-  - [Graphical user interface (GUI) repository of the 2023 SenSwiss Team](#graphical-user-interface-gui-repository-of-the-2023-senswiss-team)
+- [Graphical user interface (GUI) repository of the 2023 SenSwiss Team](#graphical-user-interface-gui-repository-of-the-2023-senswiss-team)
   - [Structure](#structure)
   - [Installation](#installation)
   - [Description](#description)
@@ -12,7 +12,7 @@
     - [Camera](#camera)
     - [Spectrometer](#spectrometer)
     - [Arduino \& DC motor](#arduino--dc-motor)
-  - [Protocols](#protocols)
+    - [Protocols](#protocols)
   - [Usage](#usage)
   - [Results](#results)
   - [Authors](#authors)
@@ -61,6 +61,7 @@ The GUI is presented as follows, with on the left, the image/spectrograph and th
 ### Microfluidic system
 The microfluidic section contains all buttons to control the integrated pump system ([AMF LSPone](https://amf.ch/produit/lspone-laboratory-syringe-pump/)). The pump is a 12 valves microfluidic system that allows to pick and dispense a volume of 8-250 mL at a flowrate of 25-7'500 $\mu L$/min.
 
+<<<<<<< HEAD
 The Microfluidic is highly customizable and allows for the choice of three modalities: **Manual**, **Semi-Automatic**, **Automatic**.
 
 #### Manual
@@ -71,6 +72,7 @@ Every command can be added manually, by specifying the valve number, the action 
 
 The user can load a protocol by clicking on the `Load protocol` button. The user can then select the protocol to load from the list of protocols. The protocol will be loaded and displayed in the list of commands. The user can then edit the protocol and save it under a different name. 
 
+ 
 
 <a id="Camera"></a>
 ### Camera
