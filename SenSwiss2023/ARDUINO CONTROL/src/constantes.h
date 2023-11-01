@@ -20,4 +20,4 @@
 #define CURRENT_AVERAGE 50 // [samples]
 #define SPEED_UP 3.5 // [rpm/s]
 #define SPEED_DOWN 3.5 // [rpm/s]
-#define STARTING_TIME 300 // [s]
+#define STARTING_TIME 300 // [ms]
