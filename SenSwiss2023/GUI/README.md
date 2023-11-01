@@ -6,9 +6,9 @@
 - [Installation](#installation)
 - [Description](#description)
   - [Interface](#interface)
+  - [Microfluidic system](#microfluidic-system)
   - [Camera](#camera)
   - [Spectrometer](#spectrometer)
-  - [Microfluidic system](#microfluidic-system)
   - [Arduino \& DC motor](#arduino--dc-motor)
   - [Signal processing](#signal-processing)
     - [Camera image](#camera-image)
@@ -47,7 +47,7 @@ pip install name_of_the_library
 
 <a id="Description"></a>
 ## Description
-This miniprogram allow the user to control the different systems of the sensor and to perform the experiments. The GUI can be used in two modes: with a camera or with a spectrometer, depending on which measurement is better suited for the experiment. The GUI will then automatically adapt the interface to the chosen mode.
+This miniprogram allow the user to control the different systems of the sensor and to perform the experiments. The GUI can be used in two modes: with a camera or with a spectrometer, depending on which measurement is better suited for the experiment. The GUI will then automatically adapt the interface to the pluged in measurement device.
 
 The GUI is divided into 3 parts:
 - **Microfluidics** which controls the pump
@@ -57,16 +57,22 @@ The GUI is divided into 3 parts:
 
 <a id="Interface"></a>
 ### Interface
-![ROI in automatic mode](layout_figures/ROI_auto.jpg)
-
-<a id="Camera"></a>
-### Camera
-
-<a id="Spectrometer"></a>
-### Spectrometer
+The GUI is presented as follows, with on the left, the image/spectrograph and the signal over time, and on the right, the control buttons and the parameters to set.
 
 <a id="Microfluidic-system"></a>
 ### Microfluidic system
+
+<a id="Camera"></a>
+### Camera
+GUI in camera mode:
+![ROI in automatic mode](layout_figures/ROI_auto.jpg)
+
+<a id="Spectrometer"></a>
+### Spectrometer
+GUI in spectrometer mode:
+![ROI in automatic mode](layout_figures/GUI_general.jpg)
+
+
 
 <a id="Arduino-&-DC-motor"></a>
 ### Arduino & DC motor
@@ -89,6 +95,8 @@ The original idea was to use the intensity of the ROI to detect the concentratio
 The spectrometer employed by the SenSwiss team 2023 is MAYA2000PR0. The spectrometer connected to the computer gets recognized and the signal is acquired. 
 
 The signal from the spectrometer is low pass filtered. The dark and flat fields are saved (by pressing a button on the GUI), allowing to normalize the signal. The signal is then plotted in a top left window.
+\usepackage[textwidth=8cm]{geometry}
+\usepackage{amsmath}
 
 $\text{normalized\_intensities\_spec} = \frac{\test{intensities\_spec} - \text{dark\_field}}{\text{flat\_field} - \text{dark\_field}}  \text{normalize\_gain}$
 
