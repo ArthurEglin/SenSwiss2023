@@ -59,14 +59,19 @@ The GUI is presented as follows, with on the left, the image/spectrograph and th
 ### Microfluidic system
 The microfluidic section contains all buttons to control the integrated pump system ([AMF LSPone](https://amf.ch/produit/lspone-laboratory-syringe-pump/)). The pump is a 12 valves microfluidic system that allows to pick and dispense a volume of 8-250 mL at a flowrate of 25-7'500 $\mu L$/min.
 
-The microfluidic system is highly customizable and allows for the choice of three modalities: *Manual, **Semi-Automatic, **Automatic*.
+The microfluidic system is highly customizable and allows for the choice of three modalities: **Manual**, **Semi-Automatic**, **Automatic**.
 
 #### Manual
+![Microflu_manual](layout_figures/Microflu_manual.jpg)
 
 Every command can be added manually, by specifying the valve number, the action (Pick/Dispense), the volume and the the flowrate. The user can then click on the Add command button to add the command to the list of commands. The list of commands can be saved by clicking on the Save protocol button. The protocol will be saved in the protocols folder as a *.csv* file. The user can name the protocol file via the adjacent input field, in any case, the protocol will be saved. 
 
-#### Automatic
+#### Semi-Automatic
+![Microflu_semiauto](layout_figures/Microflu_semiauto.jpg)
 
+
+#### Automatic
+![Microflu_auto](layout_figures/Microflu_auto.jpg)
 The user can load a protocol by clicking on the Load protocol button. The user can then select the protocol to load from the list of protocols. The protocol will be loaded and displayed in the list of commands. The user can then edit the protocol and save it under a different name.
 
 <a id="Camera"></a>
