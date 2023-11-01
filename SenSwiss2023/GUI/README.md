@@ -15,7 +15,6 @@
   - [Spectrometer signal](#spectrometer-signal)
     - [Centroids](#centroids)
     - [Protocols](#protocols)
-  - [Usage](#usage)
   - [Results](#results)
   - [Authors](#authors)
 
@@ -109,6 +108,11 @@ Having found the previous method ineffective, we resorted to computing centroids
 <a id="Protocols"></a>
 ### Protocols
 
+The Software team's responsibilities included conducting various experiments with the biosensor, testing different protocols, and archiving the results. 
+
+During experiments, protocols can be inputted directly into the User Interface and saved in the 'protocols' folder. These protocols are stored in .csv files, making it possible to conveniently reload them in the GUI for future experiments, ultimately saving time. 
+
+```
 <a id="Usage"></a>
 ## Usage
 To run the GUI, you can use the following command in the Anaconda prompt after activating the environment:
