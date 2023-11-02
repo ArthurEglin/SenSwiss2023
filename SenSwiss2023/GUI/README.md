@@ -1,7 +1,7 @@
 # Graphical user interface (GUI) repository of the 2023 SenSwiss Team
 
 **Table of content:**
-  - [Graphical user interface (GUI) repository of the 2023 SenSwiss Team](#graphical-user-interface-gui-repository-of-the-2023-senswiss-team)
+- [Graphical user interface (GUI) repository of the 2023 SenSwiss Team](#graphical-user-interface-gui-repository-of-the-2023-senswiss-team)
   - [Structure](#structure)
   - [Installation](#installation)
   - [Description](#description)
@@ -46,17 +46,17 @@ pip install name_of_the_library
 
 <a id="Description"></a>
 ## Description
-This miniprogram allow the user to control the different systems of the sensor and to perform the experiments. The GUI can be used in two modes: with a camera or with a spectrometer, depending on which measurement is better suited for the experiment. The GUI will then automatically adapt the interface to the pluged in measurement device.
+This miniprogram allows the user to control the different systems of the sensor and to perform the experiments. The GUI can be used in two modes: with a camera or with a spectrometer, depending on which measurement is better suited for the experiment. The GUI will then automatically adapt the interface to the plugged in measurement device.
 
 The GUI is divided into 3 parts:
-- **Microfluidics** which controls the pump
-- **Measurement device** which controls either the camera or the spectrometer depending on which is pluged in, and procresses the signal to obtain a signal over time
-- **Motor control** which controls the DC motor to open or close the measurement chamber
+- **Microfluidics section**, which controls the pump;
+- **Measurement device section**, which controls either the camera or the spectrometer depending on which is plugged in, and processes the signal to obtain a signal over time
+- **Motor control section**, which controls the DC motor to open or close the measurement chamber
 
 
 <a id="Interface"></a>
 ### Interface
-The GUI is presented as follows, with on the left, the image/spectrograph and the signal over time, and on the right, the control buttons and the parameters to set.
+The GUI is presented as follows, displaying on the left the image/spectrograph and the signal over time, and on the right the control buttons and the parameters to set.
 
 <a id="Microfluidic-system"></a>
 ### Microfluidic system
@@ -65,45 +65,45 @@ The microfluidic section contains all buttons to control the integrated pump sys
 The microfluidic system is highly customizable and allows for the choice of three modalities: **Manual**, **Semi-Automatic**, **Automatic**.
 
 In all modes, the following buttons are available:
-- `Reconnect pump`: reconnects the pump to the computer if it gets disconnected during the experiment
-- `Stop and trash`: stop the current pump command and trash the remaining volume in the trash reservoir (valve 1)
-- `Reinitialize`: reinitialize the pump system, i.e. set all valves to the initial position (valve 1)
-- `Kick out bubble`: send a short series of pulses to the pump to kick out any bubble in the microfluidic system, the user has to specify the input and output valves and then the program send preprogrammed instructions to the pump.
+- `Reconnect pump`: reconnects the pump to the computer in the case wheter it disconnected during the experiment;
+- `Stop and trash`: stops the current pump command and trashes the remaining volume in the trash reservoir (valve 1);
+- `Reinitialize`: reinitializes the pump system, i.e. sets all valves to the initial position (valve 1);
+- `Kick out bubble`: sends a short series of pulses to the pump to kick out any bubble in the microfluidic system. The user has to specify the input and output valves and then the program sends preprogrammed instructions to the pump.
 
 #### Manual
 ![Microflu_manual](layout_figures/Microflu_manual.jpg)
 
 Every command has to be defined manually one at a time. The possible commands are the following:
-- `Switch to valve`: the pump select the valve according to the user input 
-- `Set speed`: the user defines the flowrate of the pump in $\mu L$/min
-- `Pickup uL`: the user defines the volume to pick up (in $\mu L$) from the chosen valve
-- `Dispense uL`: the user defines the volume to dispense (in $\mu L$L) from the chosen valve
-- `Heat ON`: the user defines the temperature of the heating plate (in °C) and sets the heating plate ON
-- `Heat OFF`: the user sets the heating plate OFF
+- `Switch to valve`: the pump selects the valve according to the user input;
+- `Set speed`: the user defines the flowrate of the pump in $\mu L$/min;
+- `Pickup uL`: the user defines the volume to pick up (in $\mu L$) from the chosen valve;
+- `Dispense uL`: the user defines the volume to dispense (in $\mu L$L) from the chosen valve;
+- `Heat ON`: the user defines the temperature of the heating plate (in °C) and sets the heating plate ON;
+- `Heat OFF`: the user sets the heating plate OFF.
 
 #### Semi-automatic
 ![Microflu_semiauto](layout_figures/Microflu_semiauto.jpg)
 
 The semi-automatic mode allows the user to define a protocol of commands that will be executed sequentially. The user can add new command lines by clicking on the `+` button, and then specify the different inputs as follows:
-- `Port`: the user defines the valve to use
-- `Action`: the user selects the action to execute from the drop-down list (Pick or Dispense)
+- `Port`: the user defines the valves to use
+- `Action`: the user selects the actions to execute from the drop-down list (Pick or Dispense)
 - `Volume`: the user defines the volume to pick or dispense (in $\mu L$)
 - `Speed`: the user defines the flowrate of the pump (in $\mu L$/min)
-- `Title`: the user specify a title for the command line (optional), this title will be added to the data file of the experiment at the corresponding timepoint when the sample is dispensed into the chamber (the program automatically computes the required time given the volume and the flowrate and the fixed tubing length)
-- `Wait`: add a waiting step of a user specified duration (in miliseconds) before executing the next command line
+- `Title`: the user specifies a title for the command line (optional), this title will be added to the data file of the experiment at the corresponding timepoint when the sample is dispensed into the chamber (the program automatically computes the required time given the volume and the flowrate and the fixed tubing length)
+- `Wait`: adds a waiting step of a user specified duration (in miliseconds) before executing the next command line
 - `copy`: the copy checkbox allows to select the line to copy, the user can then paste the line by clicking on the `Copy commands` button
 - `Delete`: the user can delete the line by clicking on the `Delete` button
 
-The list of commands can be saved by clicking on the `Save commands` button with a file name specified by the user. The protocol will be saved in the protocols folder as a **.csv** file. If the user loads a protocol from the automatic section, the program will automatically load the protocol and display it in the list of commands in the semi-automatic section. The user can then edit the protocol and save it under a different name.
+The list of commands can be saved by clicking on the `Save commands` button. The filename is to be specified by the user. The protocol will be saved in the protocols folder as a **.csv** file. If the user loads a protocol from the automatic section, the program will automatically load the protocol and display it in the list of commands in the semi-automatic section. The user can then edit the protocol and save it under a different name.
 
 The user can clear the whole command pannel by clicking on the `Delete all` button.
 
-Finally, the user can send the protocol to the pump for it to be sequentially executed by clicking on the `Send` button. The program will concatenate all the command **strings** into a big command **string** and send it to the pump which will then dissect it and execute the instruction one by one. This communication way prevents too long lists of commands. An empirical maximum is at 22 command lines.
+Finally, the user can send the protocol to the pump for it to be sequentially executed by clicking on the `Send` button. The program will concatenate all the command **strings** into a big command **string** and send it to the pump which will then dissects it and executes the instruction one by one. This communication way prevents too long lists of commands. An empirical maximum is at 22 command lines.
 
 #### Automatic
 ![Microflu_auto](layout_figures/Microflu_auto.jpg)
 
-The automatic mode allows to execute prewritten protocols. The user can either select and directly send a protocol to the pump for it to be excecuted via the `Send protocol` button, or the user can also select and load a protocol into the semi-automatic section by clicking on the `Load protocol` button. The protocol will be loaded and displayed in the list of commands. The user can then edit the protocol and save it under a different name.
+The automatic mode allows to execute prewritten protocols. The user can either select and directly send a protocol to the pump for it to be executed via the `Send protocol` button, or they can select and load a protocol into the semi-automatic section by clicking on the `Load protocol` button. The protocol will be loaded and displayed in the list of commands. The user can then edit the protocol and save it under a different name.
 
 <a id="Camera"></a>
 ### Camera
@@ -120,7 +120,7 @@ The user can also set specific camera parameters such as the `Exposure time` and
 
 The user can save a picture of the camera image by clicking on the `Save image` button. The image will be saved in the `image_saved` folder as a **.png** file. The user can name the image file via the adjacent input field, in any case, the image will be saved with the current date and time.
 
-Finally, the user can fine tune the display of the processed signal by setting y-axis limits via the appropriate input fields (min and max), or can chose to set these values automatically by clicking on the `Auto` checkbox, the program will then automatically set the y-axis limits to the minimum and maximum values of the signal. The plot of the signal overtime can be saved via the `Save plot` button. The plot will be saved in the `plots_saved` folder as a **.csv** file. The user can name the plot file via the adjacent input field, in any case, the plot will be saved with the current date and time.
+Finally, the user can fine tune the display of the processed signal by setting y-axis limits via the appropriate input fields (min and max). Additionally, they can choose to set these values automatically by clicking on the `Auto` checkbox, the program will then automatically set the y-axis limits to the minimum and maximum values of the signal. The plot of the signal overtime can be saved via the `Save plot` button. The plot will be saved in the `plots_saved` folder as a **.csv** file. The user can name the plot file via the adjacent input field, in any case, the plot will be saved with the current date and time.
 
 The original idea was to use the intensity of the optical signal measured by a camera to detect the concentration of the sample. However, this method was found to be not sensitive enough. Hence, we decided to rely on the wavelenght shift, measured by a spectrometer to detect the concentration of the sample.
 
@@ -133,15 +133,15 @@ On the top left, the real time spectrograph of the spectrometer ([MAYA 2000 PRO]
 
 In the command pannel on the right, in the section `Spectrometer settings`, the user can set different parameters to improve the signal reading and control the spectrometer.
 
-The sampling period of the spectrometer signal can be set via the button `Acquisition period`. By default the sampling period is at 0.5 sec which is a good compromise between the signal quality and the computational cost.
+The sampling period of the spectrometer signal can be set via the button `Acquisition period`. By default the sampling period is at 0.5 sec, consisting of a good compromise between the signal quality and the computational cost.
 
-In case the spectrometer gets unpluged, the user can reconnect the spectrometer via the `Reconnect spectrometer` button. The program will then automatically detect the spectrometer and connect to it.
+In case the spectrometer gets unplugged, the user can reconnect the spectrometer via the `Reconnect spectrometer` button. The program will then automatically detect the spectrometer and ensure its connection to the system.
 
 The signal of the spectrometer (intensity spectrum along wavelengths from 500 to 900 nm) is process via the following normalization step:
 
 $$normalized\ intensity\ spectrum = \frac{intensity\ spectrum\ -\ dark\ field}{flat\ field \ -\ dark\ field}  \ normalize\ gain$$
 
-Where the **intensity spectrum** (`intensities_spec`) is the raw signal from the spectrometer, the **dark field** (`dark_field`) is the signal of the spectrometer when the light source is off, the **flat field** (`flat_field`) is the signal of the spectrometer when the light source is on and the polarizer is at 90° from its reference angle for the true measurements (the user has to manually set the polarizer at 90° to save the flat field), and the **normalize gain** (`normalize_gain`) is a constant computed as the mean value of the difference between the flat and dark fields (flat field - dark field). 
+While the **intensity spectrum** (`intensities_spec`) is the raw signal from the spectrometer, the **dark field** (`dark_field`) is the signal of the spectrometer when the light source is off, the **flat field** (`flat_field`) is the signal of the spectrometer when the light source is on and the polarizer is at 90° from its reference angle for the true measurements (the user has to manually set the polarizer at 90° to save the flat field), and the **normalize gain** (`normalize_gain`) is a constant computed as the mean value of the difference between the flat and dark fields (flat field - dark field). 
 The dark field and the flat field are to be measured at the beginning of the experiment via the appropriate buttons and are stored in memory for the entire experiment. The flat field corresponds to the optical signal as if the target (sample and chip) acted as a perfect mirror. This normalization allows to get rid of the background signal and improves the sensitivity. The normalized spectrum is then displayed in relative intensity level unit on the top left window. The user can save the spectrograph by clicking on the `Save spectrograph` button. The spectrograph will be saved in the `image_saved` folder as a **.png** file. The user can name the spectrograph file via the adjacent input field, in any case, the spectrograph will be saved with the current date and time.
 
 The idea of the measurement by spectrometry is to make use of the absorption peak shift in function of the sample concentration at the surface of the chip, thanks to the high signal enhancement effect of [surface plasmon resonance](https://en.wikipedia.org/wiki/Surface_plasmon_resonance). The absorption peak is detected by computing the minimum of the normalized spectrum. This signal is then displayed overtime on the bottom left window. As a good signal-to-noise ratio is crucial for optimal detection, different denoising methods have been implemented to improve the signal quality.
