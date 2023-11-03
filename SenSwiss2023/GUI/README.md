@@ -161,7 +161,9 @@ Finally, to compute the shift in absorbance peak, the user has to mention the **
 ### Arduino & DC motor
 The measuring chamber is opened and closed by a mechano-electrical simple system in order to ensure good reproducibility and ideal sealing of the chamber to avoid leaks in the microfluidics system. The system is composed of a DC motor simple gear system that allow vertical movement of the 3D printed chip holder. The DC motor is controlled by an Arduino Leonardo board. The Arduino code is contained in the [ARDUINO CONTROL](https://github.com/ArthurEglin/SenSwiss2023/tree/main/SenSwiss2023/ARDUINO%20CONTROL/src) folder.
 
-The user can control the DC motor via the `Motor` section in the GUI. The user can open or close the chamber by clicking on the `Open chamber` or `Close chamber` buttons. The user can also stop the motor at any time via the `Stop DC motor` button. If the Arduino gets disconnected, the user can reconnect it via the `Reconnect Arduino` button. The program will then automatically detect the Arduino and connect to it.
+The user can control the DC motor via the `Motor` section in the GUI. The user can open or close the chamber by clicking on the `Open chamber` or `Close chamber` buttons. The user can also stop the motor at any time via the `Stop DC motor` button. To ensure that the motor does not damage the measuring chamber, its torque is constantly monitored and controlled by the Arduino (since the torque is directly proportional to the applied current). It is therefore possible that the torque limit defined in the code is reached too soon if some additional friction is applied on the motor and gear system (rust, small offset). In this case, click again on the `Close chamber` button to close the measuring chamber.
+
+If the Arduino gets disconnected, the user can reconnect it via the `Reconnect Arduino` button. The program will then automatically detect the Arduino and connect to it.
 
 ![Motor control](layout_figures/Motor_control.jpg)
 
