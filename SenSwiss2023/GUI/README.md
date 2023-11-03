@@ -149,13 +149,13 @@ Firstly, we implemented a simple moving average filter. The window can be chosen
 
 Having found the previous methods not effective enough, we implemented a further denoising filter. This involves calculating the centroid of the signal in a fixed wavelenghts window set by the user at the beginning of the experiment during calibration. The user can set the window size by filling the input field `Window width for centroid` and clicking on the `Reset mean peak` button to set the window. The window will then be fixed around the the wavelength of the minimum intensity peak in the normalized spectrograph. This window is fixed for the entire experiment and then the program computes the centroid of the signal in this window. The centroid signal is then again displayed on the bottom left window. This method proved to be the most effective for signal denoising.
 
-To better visualize the different event of the experiment (adding of certain buffers, reactants or sample), the user can add markers within the plot. To do so the user can simply insert the necessary comment via the `Add comment` button and the adjacent input field. The comment will be graphically added in the plot by a labeled vertical dashed line at the corresponding timepoint.
+To better visualize the signal throughout the different steps of the experiment ( for instance when adding certain buffers, reactants or the concentration sample), the user can add markers to the plot. To do so the user can simply insert the necessary comment via the `Add comment` button and the adjacent input field. The comment will be graphically added in the plot by a labeled vertical dashed line at the corresponding timepoint.
 
 If necessary, the user can clear the plot by clicking on the `Clear plot` button.
 
 The user can fine tune the display of the processed signal by setting y-axis limits via the appropriate input fields (min and max), or can chose to set these values automatically by clicking on the `Auto` checkbox. The plot of the signal overtime can be saved via the `Save plot` button. The plot will be saved in the `plots_saved` folder as a **.csv** file. The user can name the plot file via the adjacent input field, in any case, the plot will be saved with the current date and time.
 
-Finally, to compute the shift in absorbance peak, the user has to mention the **reference** and **measure** events of the measurement (e.g. GFAP, STOP) via the two input fields and click on the `Compute shift` button. The program will then automatically measure the wavelength shift between the mean value (stable plateau) at the reference event and the mean value at the measure event, the code for this is in the `compute_shift` function in the **imgproc.py** file. This shift value can then be related to the sample concentration of analyte using the calibration curve.
+Finally, to compute the shift in absorbance peak, the user has to mention the **reference** and **measure** events of the measurement (e.g. GFAP, STOP) via the two input fields and click on the `Compute shift` button. The program will then automatically measure the wavelength shift between the mean value (stable plateau) at the reference event and the mean value at the measure event; The code for this is in the `compute_shift` function in the **imgproc.py** file. This shift value can then be related to the sample concentration of analyte using the calibration curve.
 
 <a id="Arduino-&-DC-motor"></a>
 ### Arduino & DC motor
@@ -168,7 +168,7 @@ The user can control the DC motor via the `Motor` section in the GUI. The user c
 <a id="Protocols"></a>
 ### Protocols
 
-During experiments, protocols can be inputted directly into the User Interface and saved in the `protocols` folder. These protocols are stored in **.csv** files, making it possible to manually modify them if needed and reload them in the GUI for future experiments, ultimately saving a lot of time.
+During experiments, protocols can be loaded directly into the User Interface and saved in the `protocols` folder. These protocols are stored in **.csv** files, making it possible to manually modify them if needed and reload them in the GUI for future experiments, ultimately saving a lot of time.
 
 Below an example of a protocol file is displayed (**Olygo_83cc.csv**):
 
@@ -211,7 +211,7 @@ The procedure for running an experiment with the spectrometer is as follows:
 
 The initial plan involved fitting the segments of the signal with an exponential function after applying GFAP. The intention was to save the parameters of the exponential function for each segment and utilize them to train a Machine Learning model for predicting the concentration of the sample under examination. This approach required a substantial amount of data to be collected. Unfortunately, due to the challenges faced by the SenSwiss team in 2023, this data collection could not be accomplished. Nevertheless, the functions for fitting the exponential functions are stored in 'imgproc.py' and remain available for use by future teams.
 
-The classification of each sample (from Very Low to Very High Concentration) was hence computed by fitting two linear regression curves. 
+The classification of each sample (from Very Low to Very High Concentration) was hence computed by fitting two linear regression curves (Normalized signal and Centroid) . 
 
 
 <a id="Authors"></a>
